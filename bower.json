@@ -1,0 +1,31 @@
+{
+  "name": "poopchat",
+  "main": [
+    "/dist/poopchat.min.js",
+    "/dist/poopchat.min.css"
+  ],
+  "version": "0.1.0",
+  "description": "TODO",
+  "authors": [
+    "TODO"
+  ],
+  "ignore": [
+    "**/.*",
+    "package.json",
+    "klei.json",
+    "gulpfile.js",
+    "node_modules",
+    "bower_components",
+    "src"
+  ],
+  "dependencies": {
+    "angular": "~1.2.14",
+    "angular-ui-router": "~0.2.10",
+    "angular-animate": "~1.2.16",
+    "pushstream": "*",
+    "animate.css": "~3.1.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.14"
+  }
+}

@@ -1,0 +1,45 @@
+global-reset()
+
+@import 'nib'
+@import "styles/_base"
+
+.container
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+.wrapper
+  display: flex
+  flex: 1
+  flex-direction: column
+  min-height: 100%
+
+  .messages-container
+    height: 0
+    flex: 1
+    overflow-y: scroll
+    padding: 2vh
+
+    .message
+      background: white
+      margin: 2vh 0
+      padding: 1vh
+
+      &.ng-enter
+        animation: flipInX 1s
+      &.ng-leave
+        animation: flipOutX 1s
+
+  .message-form
+    background: #dedede
+    display: flex
+    flex-direction: row
+    padding: 2vh
+
+    .message-input
+      flex: 1
+
+    .btn-send
+      border: none
+      background: rgba(22, 160, 133,1)
+      color: white

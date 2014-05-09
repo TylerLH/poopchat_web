@@ -1,0 +1,8 @@
+<div class="messages-container">
+  <div class="message" ng-repeat="message in messages">{{message.text}}</div>
+</div>
+
+<form ng-submit="sendMessage()" class="message-form">
+  <input type="text" class="message-input" ng-model="message.text" placeholder="Talk to fellow poopers..." required autofocus>
+  <button type="submit" class="btn-send">Send</button>
+</form>

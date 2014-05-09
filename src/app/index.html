@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="poopchat">
+  <head>
+    <meta charset="utf-8"/>
+    <title>poopchat</title>
+    <!-- inject:vendor:css -->
+    <link rel="stylesheet" href="/animate.css/animate.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/app.css">
+    <!-- endinject -->
+    <script type="text/javascript">
+      (function(d) {
+        var config = {
+          kitId: 'mjr8oye',
+          scriptTimeout: 3000
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+  </head>
+  <body ng-controller="AppController" class="container">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a ui-sref="chat" class="brand">poopchat</a>
+      </div>
+    </div>
+    <ui-view class="wrapper"></ui-view>
+    <!-- inject:vendor:js -->
+    <script src="/angular/angular.js"></script>
+    <script src="/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/angular-animate/angular-animate.js"></script>
+    <script src="/pushstream/pushstream.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="/poopchat-templates.js"></script>
+    <script src="/app.js"></script>
+    <script src="/app_controller.js"></script>
+    <script src="/chat/chat_controller.js"></script>
+    <script src="/chat/socket.js"></script>
+    <script src="/config/routes.js"></script>
+    <!-- endinject -->
+  </body>
+</html>
