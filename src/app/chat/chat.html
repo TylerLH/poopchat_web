@@ -1,8 +1,10 @@
-<div class="messages-container">
-  <div class="message" ng-repeat="message in messages">{{message.text}}</div>
+<div class="messages-container" autoscroller>
+  <div class="message" ng-repeat="message in messages">
+    <strong>{{message.user || 'anonymous'}} &raquo; </strong> {{message.content}}
+  </div>
 </div>
 
 <form ng-submit="sendMessage()" class="message-form">
-  <input type="text" class="message-input" ng-model="message.text" placeholder="Talk to fellow poopers..." required autofocus>
+  <input type="text" class="message-input" ng-model="message.content" placeholder="Talk to fellow poopers..." required autofocus>
   <button type="submit" class="btn-send">Send</button>
 </form>

@@ -1,0 +1,7 @@
+<!DOCTYPE html><html ng-app="poopchat"><head><meta charset="utf-8"><title>poopchat</title><link rel="stylesheet" href="/vendors.min.css"><link rel="stylesheet" href="/poopchat.min.css"><script type="text/javascript">(function(d) {
+        var config = {
+          kitId: 'mjr8oye',
+          scriptTimeout: 3000
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);</script></head><body ng-controller="AppController" class="container"><div class="navbar"><div class="navbar-inner"><a ui-sref="chat" class="brand pull-left">poopchat</a> <a href="" class="pull-right" ng-click="setUsername()">{{username || 'Set username'}}</a></div></div><ui-view class="wrapper"></ui-view><script src="/vendors.min.js"></script><script src="/poopchat.min.js"></script></body></html>

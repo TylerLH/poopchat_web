@@ -1,0 +1,147 @@
+.navbar {
+  font-size: 80%;
+  background: #27ae60;
+}
+.navbar a {
+  color: #fcfcfc;
+  text-decoration: none;
+}
+.navbar a:hover {
+  color: #dedede;
+}
+.navbar .navbar-inner {
+  zoom: 1;
+  padding: 0 2vh;
+}
+.navbar .navbar-inner:before,
+.navbar .navbar-inner:after {
+  content: "";
+  display: table;
+}
+.navbar .navbar-inner:after {
+  clear: both;
+}
+.navbar .navbar-inner .brand {
+  color: #fff;
+  font-weight: 200;
+  text-decoration: none;
+}
+body {
+  font: 20px/150% "proxima-nova", "Helvetica Neue", "Lucida Grande", Verdana, sans-serif;
+  font-weight: 100;
+  color: #666;
+  background: #fff;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+input,
+textarea,
+button {
+  font: inherit;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100%;
+}
+.wrapper .messages-container {
+  height: 0;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow-y: scroll;
+  padding: 2vh;
+}
+.wrapper .messages-container .message {
+  background: #fff;
+  margin: 2vh 0;
+  padding: 1vh;
+}
+.wrapper .messages-container .message.ng-enter {
+  -webkit-animation: fadeInUp 0.5s;
+  -moz-animation: fadeInUp 0.5s;
+  -o-animation: fadeInUp 0.5s;
+  -ms-animation: fadeInUp 0.5s;
+  animation: fadeInUp 0.5s;
+}
+.wrapper .messages-container .message.ng-leave {
+  -webkit-animation: fadeOutUp 0.5s;
+  -moz-animation: fadeOutUp 0.5s;
+  -o-animation: fadeOutUp 0.5s;
+  -ms-animation: fadeOutUp 0.5s;
+  animation: fadeOutUp 0.5s;
+}
+.wrapper .message-form {
+  background: #dedede;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 2vh;
+}
+.wrapper .message-form .message-input {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.wrapper .message-form .btn-send {
+  border: none;
+  background: #e74c3c;
+  color: #fff;
+  padding: 0 1em;
+}

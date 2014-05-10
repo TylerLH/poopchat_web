@@ -22,7 +22,8 @@
   <body ng-controller="AppController" class="container">
     <div class="navbar">
       <div class="navbar-inner">
-        <a ui-sref="chat" class="brand">poopchat</a>
+        <a ui-sref="chat" class="brand pull-left">poopchat</a>
+        <a href="" class="pull-right" ng-click="setUsername()">{{username || 'Set username'}}</a>
       </div>
     </div>
     <ui-view class="wrapper"></ui-view>
@@ -31,11 +32,14 @@
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/angular-animate/angular-animate.js"></script>
     <script src="/pushstream/pushstream.js"></script>
+    <script src="/angular-scroll/angular-scroll.min.js"></script>
+    <script src="/angular-local-storage/angular-local-storage.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
     <script src="/poopchat-templates.js"></script>
     <script src="/app.js"></script>
     <script src="/app_controller.js"></script>
+    <script src="/chat/autoscroller.js"></script>
     <script src="/chat/chat_controller.js"></script>
     <script src="/chat/socket.js"></script>
     <script src="/config/routes.js"></script>

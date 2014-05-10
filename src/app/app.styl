@@ -26,9 +26,9 @@ global-reset()
       padding: 1vh
 
       &.ng-enter
-        animation: flipInX 1s
+        animation: fadeInUp .5s
       &.ng-leave
-        animation: flipOutX 1s
+        animation: fadeOutUp .5s
 
   .message-form
     background: #dedede
@@ -41,5 +41,6 @@ global-reset()
 
     .btn-send
       border: none
-      background: rgba(22, 160, 133,1)
+      background: #e74c3c
       color: white
+      padding: 0 1em

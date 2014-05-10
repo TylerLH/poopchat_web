@@ -9,8 +9,8 @@
     $scope.messages = [];
     $scope.message = {};
 
-    socket.stream.onmessage = function(text) {
-      var data = JSON.parse(text);
+    socket.stream.onmessage = function(msg) {
+      var data = JSON.parse(msg);
       $scope.messages.push(data);
       $scope.$digest();
     };
@@ -22,14 +22,17 @@
     
     // Message-sending failure callback
     var onMessageFailed = function(err) {
-      $scope.messages.push({text: 'There was a problem sending your message. Try again...'});
+      $scope.messages.push({content: 'There was a problem sending your message. Try again...'});
     };
 
     // Send message to server
     $scope.sendMessage = function() {
       if(!socket.connected){
-        $scope.messages.push({text: "You're not connected!"});
+        $scope.messages.push({content: "You're not connected!"});
       } else {
+        if ($scope.username) {
+          $scope.message.user = $scope.username;
+        }
         socket.sendMessage($scope.message, onMessageSent, onMessageFailed);
       }
     }
