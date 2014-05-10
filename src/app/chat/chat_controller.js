@@ -8,6 +8,7 @@
   function ChatController ($scope, $log, socket) {
     $scope.messages = [];
     $scope.message = {};
+    $scope.previousMessage = {};
 
     socket.stream.onmessage = function(msg) {
       var data = JSON.parse(msg);
@@ -17,6 +18,7 @@
 
     // Message-sending success callback
     var onMessageSent = function() {
+      $scope.previousMessage = $scope.message;
       $scope.message = {};
     };
     

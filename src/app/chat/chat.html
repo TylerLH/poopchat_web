@@ -4,7 +4,7 @@
       <strong class="author">{{message.user || 'anonymous'}}</strong>
       <small class="text-muted" am-time-ago="message.timestamp"></small>
     </div>
-    <span ng-bind-html="message.content | linky:'_blank' | emoji"></span>
+    <span ng-bind-html="message.content | image_linky:'_blank' | emoji"></span>
   </div>
 </div>
 

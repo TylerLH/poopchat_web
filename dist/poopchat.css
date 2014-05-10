@@ -40,6 +40,12 @@ textarea,
 button {
   font: inherit;
 }
+small {
+  font-size: 70%;
+}
+.text-muted {
+  color: #cacaca;
+}
 .pull-left {
   float: left;
 }
@@ -113,6 +119,14 @@ button {
   -o-animation: fadeOutUp 0.5s;
   -ms-animation: fadeOutUp 0.5s;
   animation: fadeOutUp 0.5s;
+}
+.wrapper .messages-container .message .image-container {
+  width: 50%;
+  height: auto;
+}
+.wrapper .messages-container .message .image-container img {
+  width: 50%;
+  height: auto;
 }
 .wrapper .message-form {
   background: #dedede;

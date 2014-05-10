@@ -6,15 +6,18 @@ try {
 }
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('/poopchat/chat/chat.html',
-    '<div class="messages-container" autoscroller=""><div class="message" ng-repeat="message in messages"><strong>{{message.user || \'anonymous\'}} &raquo;</strong> {{message.content}}</div></div><form ng-submit="sendMessage()" class="message-form"><input class="message-input" ng-model="message.content" placeholder="Talk to fellow poopers..." required autofocus><button type="submit" class="btn-send">Send</button></form>');
+    '<div class="messages-container" autoscroller=""><div class="message" ng-repeat="message in messages"><div><strong class="author">{{message.user || \'anonymous\'}}</strong> <small class="text-muted" am-time-ago="message.timestamp"></small></div><span ng-bind-html="message.content | image_linky:\'_blank\' | emoji"></span></div></div><form ng-submit="sendMessage()" class="message-form"><input class="message-input" ng-model="message.content" placeholder="Talk to fellow poopers..." required autofocus><button type="submit" class="btn-send">Send</button></form>');
 }]);
 })();
 
 angular.module('poopchat', [
   'ui.router',
   'ngAnimate',
+  'ngSanitize',
   'duScroll',
   'LocalStorageModule',
+  'angularMoment',
+  'emoji',
   'poopchat-templates'
 ]);
 
@@ -80,6 +83,7 @@ angular.module('poopchat', [
   function ChatController ($scope, $log, socket) {
     $scope.messages = [];
     $scope.message = {};
+    $scope.previousMessage = {};
 
     socket.stream.onmessage = function(msg) {
       var data = JSON.parse(msg);
@@ -89,6 +93,7 @@ angular.module('poopchat', [
 
     // Message-sending success callback
     var onMessageSent = function() {
+      $scope.previousMessage = $scope.message;
       $scope.message = {};
     };
     
@@ -105,6 +110,7 @@ angular.module('poopchat', [
         if ($scope.username) {
           $scope.message.user = $scope.username;
         }
+        $scope.message.timestamp = new Date();
         socket.sendMessage($scope.message, onMessageSent, onMessageFailed);
       }
     }
@@ -182,3 +188,70 @@ angular.module('poopchat', [
           });
     }]);
 })();
+'use strict';
+
+//transform image links to img tags and http links to a tags
+//angular version: 1.2.6
+//include ngSanitize
+
+angular.module('poopchat').filter('image_linky', ['$sanitize', function($sanitize) {
+  var LINKY_URL_REGEXP = /((ftp|https?):\/\/|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>]/,
+      MAILTO_REGEXP = /^mailto:/, 
+      IMAGE_REGEX = /(https?:\/\/.*\.(?:png|jpg|gif|jpeg)(\?\w*)?)/i;
+
+  return function(text, target) {
+    if (!text) return text;
+    var match;
+    var raw = text;
+    var html = [];
+    var url;
+    var i;
+    while ((match = raw.match(IMAGE_REGEX))) {
+      // We can not end in these as they are sometimes found at the end of the sentence
+      url = match[0];
+      i = match.index;
+      addImage(url);
+      raw = raw.substring(i + match[0].length);
+    }
+
+    while ((match = raw.match(LINKY_URL_REGEXP))) {
+      // We can not end in these as they are sometimes found at the end of the sentence
+      url = match[0];
+      // if we did not match ftp/http/mailto then assume mailto
+      if (match[2] == match[3]) url = 'mailto:' + url;
+      i = match.index;
+      addText(raw.substr(0, i));
+      addLink(url, match[0].replace(MAILTO_REGEXP, ''));
+      raw = raw.substring(i + match[0].length);
+    }
+    addText(raw);
+    return $sanitize(html.join(''));
+
+    function addText(text) {
+      if (!text) {
+        return;
+      }
+      html.push(text);
+    }
+
+    function addLink(url, text) {
+      html.push('<a ');
+      html.push('target="');
+      html.push('_blank');
+      html.push('" ');
+      html.push('href="');
+      html.push(url);
+      html.push('">');
+      addText(text);
+      html.push('</a>');
+    }
+
+    function addImage(url){
+      
+      html.push('<div class="image-container">');
+      html.push('<a href="'+url+'" target="_blank"><img src="'+url+'" /></a>');
+      html.push('</div>');
+
+    }
+  };
+}]);
