@@ -33,6 +33,7 @@
         if ($scope.username) {
           $scope.message.user = $scope.username;
         }
+        $scope.message.timestamp = new Date();
         socket.sendMessage($scope.message, onMessageSent, onMessageFailed);
       }
     }

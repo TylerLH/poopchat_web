@@ -25,7 +25,9 @@
     "pushstream": "*",
     "animate.css": "~3.1.1",
     "angular-scroll": "~0.5.5",
-    "angular-local-storage": "~0.0.3"
+    "angular-local-storage": "~0.0.3",
+    "angular-sanitize": "~1.2.16",
+    "angular-moment": "~0.7.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.14"

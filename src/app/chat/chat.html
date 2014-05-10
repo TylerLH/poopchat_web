@@ -1,6 +1,10 @@
 <div class="messages-container" autoscroller>
   <div class="message" ng-repeat="message in messages">
-    <strong>{{message.user || 'anonymous'}} &raquo; </strong> {{message.content}}
+    <div>
+      <strong class="author">{{message.user || 'anonymous'}}</strong>
+      <small class="text-muted" am-time-ago="message.timestamp"></small>
+    </div>
+    <span ng-bind-html="message.content | linky:'_blank'"></span>
   </div>
 </div>
 
