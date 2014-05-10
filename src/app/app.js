@@ -5,5 +5,6 @@ angular.module('poopchat', [
   'duScroll',
   'LocalStorageModule',
   'angularMoment',
+  'emoji',
   'poopchat-templates'
 ]);
